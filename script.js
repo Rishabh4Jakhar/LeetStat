@@ -54,10 +54,20 @@ async function showCards() {
   cards.innerHTML="<p>Loading...</p>";
   const all=await Promise.all(users.map(async u => {
     const stat=await getStats(u);
-    const recent=(stat.error ? []:await getRecent(u));
+    let recent=[];
+    if (!stat.error){
+      try{
+        recent=await Promise.race([
+        getRecent(u),
+        new Promise((_,reject)=>setTimeout(()=>reject(new Error("timeout")), 4000))
+        ]);
+      } catch (e) {
+        recent = [];
+      }
+    }
     return { ...stat, recent };
   }));
-  cards.innerHTML= "";
+  cards.innerHTML = "";
   all.forEach(data => {
     const { user, totalSolved, easySolved, mediumSolved, hardSolved, submissionCalendar, recent, error } = data;
     if (error) {
