@@ -1,6 +1,6 @@
 const users = ["rishabhjakhar04", "AdvikGupta2005", "BhattAkshat", "garvit4356", "udaypandita2005", "RobinHood_1803", "Mokshmalik999", "Eklavya_sharma", "Siddharth_kalra05", "HARDIK_ARORA_16", "tanmaygakhar", "_ishaaann_"];
 const cards = document.getElementById("profiles");
-const refresh = document.getElementById("refreshBtn");
+//const refresh = document.getElementById("refreshBtn");
 
 async function getStats(user) {
   const res =await fetch(`https://leetcode-stats-api.herokuapp.com/${user}`);
@@ -87,5 +87,5 @@ async function showCards() {
       </div>`;
   });
 }
-refresh.addEventListener("click", showCards);
+//refresh.addEventListener("click", showCards);
 showCards();
