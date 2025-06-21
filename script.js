@@ -3,7 +3,7 @@ const realNames = {
   "rishabhjakhar04": "Rishabh Jakhar",
   "AdvikGupta2005": "Advik Gupta",
   "BhattAkshat": "Akshat Bhatt",
-  "garvit4356": "Garvit",
+  "garvit4356": "Garvit Yadav",
   "udaypandita2005": "Uday Pandita",
   "RobinHood_1803": "Nitesh",
   "Mokshmalik999": "Moksh Malik",
@@ -81,8 +81,9 @@ async function showCards() {
   cards.innerHTML = "";
   all.forEach(data => {
     const {user,totalSolved,easySolved,mediumSolved,hardSolved,submissionCalendar,recent,error}=data;
+    const userName = realNames[user]||user;
     if (error){
-      cards.innerHTML+=`<div class="card not-done"><h3>${user}</h3><p>❌ Could not load data.</p></div>`;
+      cards.innerHTML+=`<div class="card not-done"><h3>${userName}</h3><p>❌ Could not load data.</p></div>`;
       return;
     }
     const glow=solvedToday(submissionCalendar || {}) ? "done-today" : "not-done";
@@ -95,7 +96,6 @@ async function showCards() {
           <span class="tag">${q.lang}</span>
         </div>`;
     }).join("");
-    const userName = realNames[user]||user;
     cards.innerHTML += `
       <div class="card ${glow}">
         <h3><a href="https://leetcode.com/${user}" target="_blank">${userName}</a></h3>
