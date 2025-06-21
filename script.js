@@ -16,6 +16,7 @@ function getStreak(cal) {
   const today=Math.floor(Date.now()/1000/86400)*86400;
   let streak=0;
   for (let i=0;i<1000;i++) {
+    //console.log("Checking day:",today-i*86400);
     const day = today-i*86400;
     if (cal[day]) {
       streak++;
@@ -41,13 +42,8 @@ async function getRecent(user, n=3) {
 }
 
 function solvedToday(cal) {
-  const now=new Date();
-  const ist=new Date(now.getTime() + (5.5 * 60 * 60000));
-  if (ist.getHours()<5 || (ist.getHours()===5 && ist.getMinutes()<30)) {
-    ist.setDate(ist.getDate()-1);
-  }
-  const day=Math.floor(ist.getTime()/1000/86400)*86400;
-  return !!cal[day];
+  const today = Math.floor(Date.now()/1000/86400)*86400;
+  return !!cal[today];
 }
 
 async function showCards() {
