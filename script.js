@@ -5,7 +5,7 @@ const realNames = {
   "BhattAkshat": "Akshat Bhatt",
   "garvit4356": "Garvit Yadav",
   "udaypandita2005": "Uday Pandita",
-  "RobinHood_1803": "Nitesh",
+  "RobinHood_1803": "Sonal",
   "Mokshmalik999": "Moksh Malik",
   "Eklavya_sharma": "Eklavya Sharma",
   "Siddharth_kalra05": "Siddharth Kalra",
