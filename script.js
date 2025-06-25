@@ -14,7 +14,7 @@ const realNames = {
   "_ishaaann_": "Ishaan",
   "tanishqgoyal470": "Tanishq Goyal",
   "CozNuts": "Nikita",
-  "timmiii": "Tanisha",
+  "timmiii": "Tanisha Thrower (TT)",
   "nityaagoel": "Nityaa",
 };
 const cards = document.getElementById("profiles");
