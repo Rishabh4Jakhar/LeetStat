@@ -1,4 +1,4 @@
-const users = ["rishabhjakhar04", "AdvikGupta2005", "BhattAkshat", "garvit4356", "udaypandita2005", "RobinHood_1803", "Mokshmalik999", "Eklavya_sharma", "Siddharth_kalra05", "HARDIK_ARORA_16", "tanmaygakhar", "_ishaaann_", "tanishqgoyal470", "ModitMalhotra", "timmiii", "nityaagoel"];
+const users = ["rishabhjakhar04", "AdvikGupta2005", "BhattAkshat", "garvit4356", "udaypandita2005", "RobinHood_1803", "Mokshmalik999", "Eklavya_sharma", "Siddharth_kalra05", "HARDIK_ARORA_16", "tanmaygakhar", "_ishaaann_", "tanishqgoyal470", "ModitMalhotra", "timmiii", "nityaagoel","namit23340"];
 const realNames = {
   "rishabhjakhar04": "Rishabh Jakhar",
   "AdvikGupta2005": "Advik Gupta",
@@ -16,6 +16,7 @@ const realNames = {
   "ModitMalhotra": "Modit Malhotra",
   "timmiii": "Tanisha Thrower (TT)",
   "nityaagoel": "Nityaa",
+  "namit23340": "Namit Bajaj"
 };
 const cards = document.getElementById("profiles");
 //const refresh = document.getElementById("refreshBtn");
