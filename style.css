@@ -51,12 +51,14 @@ a:hover {
   text-decoration: underline;
 }
 
-.card.done-today {
+.card.done-today .avatar {
   box-shadow: 0 0 10px 2px #00c853;
+  border: 2px solid #00c853;
 }
 
-.card.not-done {
+.card.not-done .avatar {
   box-shadow: 0 0 10px 2px #d50000;
+  border: 2px solid #d50000;
 }
 
 .recent-list {
@@ -75,4 +77,23 @@ a:hover {
   border-radius: 4px;
   font-size: 12px;
   margin-right: 4px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.card-header h3 {
+  margin: 0;
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+
 }
