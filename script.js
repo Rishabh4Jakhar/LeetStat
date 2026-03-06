@@ -21,13 +21,27 @@ const cards = document.getElementById("profiles");
 //const refresh = document.getElementById("refreshBtn");
 
 async function getStats(user) {
-  const res =await fetch(`https://leetcode-stats-api.herokuapp.com/${user}`);
-  if (!res.ok) {
+  try {
+    const res =await fetch(`https://leetcode-stats.tashif.codes/${user}/profile`);
+    const data = await res.json();
+    if (data.status!=="success") {
+      return {user,error:true};
+    }
+    const stats=data.submitStats.acSubmissionNum;
+    return {
+      user: user,
+      totalSolved: stats[0].count,
+      easySolved: stats[1].count,
+      mediumSolved: stats[2].count,
+      hardSolved: stats[3].count,
+      submissionCalendar: data.submissionCalendar,
+      recent: data.recentSubmissions.slice(0,3),
+      avatar: data.profile.userAvatar,
+      error: false      
+    };
+  } catch {
     return {user,error:true};
   }
-  const data= await res.json();
-  data.user =user;
-  return data;
 }
 
 function getStreak(cal) {
@@ -52,12 +66,6 @@ function lastSolved(cal) {
   return date.toDateString();
 }
 
-async function getRecent(user, n=3) {
-  const res=await fetch(`https://alfa-leetcode-api.onrender.com/${user}/acSubmission?limit=${n}`);
-  if (!res.ok) return [];
-  const json=await res.json();
-  return json.submission || [];
-}
 
 function solvedToday(cal) {
   const today = Math.floor(Date.now()/1000/86400)*86400;
@@ -68,22 +76,11 @@ async function showCards() {
   cards.innerHTML="<p>Loading...</p>";
   const all=await Promise.all(users.map(async u => {
     const stat=await getStats(u);
-    let recent=[];
-    if (!stat.error){
-      try{
-        recent=await Promise.race([
-        getRecent(u),
-        new Promise((_,reject)=>setTimeout(()=>reject(new Error("timeout")), 4000))
-        ]);
-      } catch (e) {
-        recent = [];
-      }
-    }
-    return { ...stat, recent };
+    return stat;
   }));
   cards.innerHTML = "";
   all.forEach(data => {
-    const {user,totalSolved,easySolved,mediumSolved,hardSolved,submissionCalendar,recent,error}=data;
+    const {user,totalSolved,easySolved,mediumSolved,hardSolved,submissionCalendar,recent,avatar,error}=data;
     const userName = realNames[user]||user;
     if (error){
       cards.innerHTML+=`<div class="card not-done"><h3>${userName}</h3><p>❌ Could not load data.</p></div>`;
@@ -101,7 +98,10 @@ async function showCards() {
     }).join("");
     cards.innerHTML += `
       <div class="card ${glow}">
+        <div class="card-header">
         <h3><a href="https://leetcode.com/${user}" target="_blank">${userName}</a></h3>
+        <img src="${avatar}" class="avatar ${glow}">
+        </div>
         <p><strong>Total Solved:</strong> ${totalSolved}</p>
         <p>Easy: ${easySolved}, Medium: ${mediumSolved}, Hard: ${hardSolved}</p>
         <p><strong>Streak:</strong> ${streak} days</p>
