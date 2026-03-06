@@ -51,16 +51,13 @@ a:hover {
   text-decoration: underline;
 }
 
-.card.done-today .avatar {
-  box-shadow: 0 0 10px 2px #00c853;
-  border: 2px solid #00c853;
+.card.done-today {
+  box-shadow: 0 0 12px 3px #00c853;
 }
 
-.card.not-done .avatar {
-  box-shadow: 0 0 10px 2px #d50000;
-  border: 2px solid #d50000;
+.card.not-done {
+  box-shadow: 0 0 12px 3px #d50000;
 }
-
 .recent-list {
   margin-top: 10px;
 }
@@ -95,5 +92,14 @@ a:hover {
   height: 64px;
   border-radius: 50%;
   object-fit: cover;
+}
 
+.card.done-today .avatar {
+  border: 1px solid #00c853;
+  box-shadow: 0 0 8px #00c853;
+}
+
+.card.not-done .avatar {
+  border: 1px solid #d50000;
+  box-shadow: 0 0 8px #d50000;
 }
