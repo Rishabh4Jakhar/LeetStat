@@ -78,11 +78,12 @@ async function loadData() {
     const stat=await getStats(u);
     return stat;
   }));
-  renderCards(cache);
+  renderCards();
 }
 
-function renderCards(all=cache) {
+function renderCards() {
   const sortType=document.getElementById("sortSelect").value;
+  let all=[...cache];
   if (sortType!=="default") {
     all.sort((a, b) => {
       switch (sortType) {
@@ -97,7 +98,7 @@ function renderCards(all=cache) {
         case "streak":
           return getStreak(b.submissionCalendar || {}) - getStreak(a.submissionCalendar || {});
         default:
-          return 0;
+          return cache;
       }
     });
   }
