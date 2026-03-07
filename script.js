@@ -20,7 +20,6 @@ const realNames = {
 };
 const cards = document.getElementById("profiles");
 let cache = {};
-//const refresh = document.getElementById("refreshBtn");
 
 async function getStats(user) {
   try {
@@ -50,7 +49,6 @@ function getStreak(cal) {
   const today=Math.floor(Date.now()/1000/86400)*86400;
   let streak=0;
   for (let i=0;i<1000;i++) {
-    //console.log("Checking day:",today-i*86400);
     const day = today-i*86400;
     if (cal[day]) {
       streak++;
@@ -137,7 +135,7 @@ function renderCards(all=cache) {
       </div>`;
   });
 }
-//refresh.addEventListener("click", showCards);
+
 loadData();
 document.getElementById("sortSelect").addEventListener("change", () => {
   renderCards();
