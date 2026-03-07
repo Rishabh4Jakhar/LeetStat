@@ -103,3 +103,19 @@ a:hover {
   border: 1px solid #d50000;
   box-shadow: 0 0 8px #d50000;
 }
+
+.controls{
+  margin-bottom:20px;
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  align-items:center;
+}
+
+#sortSelect{
+  padding:5px 8px;
+  background:#1e1e1e;
+  color:white;
+  border:1px solid #444;
+  border-radius:5px;
+}
