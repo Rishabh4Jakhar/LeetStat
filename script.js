@@ -19,6 +19,7 @@ const realNames = {
   "namit23340": "Namit Bajaj"
 };
 const cards = document.getElementById("profiles");
+let cache = {};
 //const refresh = document.getElementById("refreshBtn");
 
 async function getStats(user) {
@@ -73,12 +74,35 @@ function solvedToday(cal) {
   return !!cal[today];
 }
 
-async function showCards() {
+async function loadData() {
   cards.innerHTML="<p>Loading...</p>";
-  const all=await Promise.all(users.map(async u => {
+  cache=await Promise.all(users.map(async u => {
     const stat=await getStats(u);
     return stat;
   }));
+  renderCards(cache);
+}
+
+function renderCards(all=cache) {
+  const sortType=document.getElementById("sortSelect").value;
+  if (sortType!=="default") {
+    all.sort((a, b) => {
+      switch (sortType) {
+        case "total":
+          return b.totalSolved - a.totalSolved;
+        case "easy":
+          return b.easySolved - a.easySolved;
+        case "medium":
+          return b.mediumSolved - a.mediumSolved;
+        case "hard":
+          return b.hardSolved - a.hardSolved;
+        case "streak":
+          return getStreak(b.submissionCalendar || {}) - getStreak(a.submissionCalendar || {});
+        default:
+          return 0;
+      }
+    });
+  }
   cards.innerHTML = "";
   all.forEach(data => {
     const {user,totalSolved,easySolved,mediumSolved,hardSolved,submissionCalendar,recent,avatar,error}=data;
@@ -114,4 +138,7 @@ async function showCards() {
   });
 }
 //refresh.addEventListener("click", showCards);
-showCards();
+loadData();
+document.getElementById("sortSelect").addEventListener("change", () => {
+  renderCards();
+});
