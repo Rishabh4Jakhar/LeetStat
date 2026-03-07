@@ -13,6 +13,17 @@
 <body>
   <h1>Leetcode Stats</h1>
   <!--<button id="refreshBtn">Refresh Stats</button>-->
+  <div class="controls">
+  <label for="sortSelect">Sort by:</label>
+  <select id="sortSelect">
+    <option value="default">Custom</option>
+    <option value="total">Most Solved</option>
+    <option value="easy">Easy</option>
+    <option value="medium">Medium</option>
+    <option value="hard">Hard</option>
+    <option value="streak">Longest Streak</option>
+  </select>
+  </div>  
   <div id="profiles" class="card-container"></div>
 
   <script src="script.js"></script>
