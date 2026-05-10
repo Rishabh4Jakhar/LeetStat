@@ -36,7 +36,7 @@ async function getStats(user) {
       mediumSolved: stats[2].count,
       hardSolved: stats[3].count,
       submissionCalendar: data.submissionCalendar,
-      recent: data.recentSubmissions.slice(0,3),
+      recent: data.recentSubmissions.slice(0,3).length === 0 ? ["Private Profile"] : data.recentSubmissions.slice(0,3), // If .recentSubmissions is empty, return "Private Profile"
       avatar: data.profile.userAvatar,
       error: false      
     };
@@ -112,14 +112,15 @@ function renderCards() {
     }
     const glow=solvedToday(submissionCalendar || {}) ? "done-today" : "not-done";
     const streak=getStreak(submissionCalendar || {});
-    const recentHtml = recent.map(q => {
+    // If the profile is private, recent will be ["Private Profile"], so we check for that before rendering
+    const recentHtml = recent[0]==="Private Profile" ? `<p><em>Recent submissions are private.</em><br>Go bully them to make it public</p>` : recent.map(q => {
       const link = `https://leetcode.com/problems/${q.titleSlug}`;
-      return `
-        <div class="recent-item">
-          <a href="${link}" target="_blank"><strong>${q.title}</strong></a>
-          <span class="tag">${q.lang}</span>
-        </div>`;
-    }).join("");
+        return `
+          <div class="recent-item">
+            <a href="${link}" target="_blank"><strong>${q.title}</strong></a>
+            <span class="tag">${q.lang}</span>
+          </div>`;
+      }).join("");
     cards.innerHTML += `
       <div class="card ${glow}">
         <div class="card-header">
