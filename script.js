@@ -129,7 +129,7 @@ function renderMiniHeatmap(heatmap) {
     const last30 = heatmap.dailyContributions.slice(-30);
     let html = `<div class="mini-heatmap">`;
     last30.forEach(day => {
-        html += `<div class="mini-heat level-${day.level}" title="${day.date}: ${day.count} submissions"></div>`;
+        html += `<div class="mini-heat level-${day.level}" title="${day.date}: ${day.count/2} submissions"></div>`;
     });
     html += "</div>";
     return html;
