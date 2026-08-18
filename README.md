@@ -7,7 +7,7 @@ Display leetcode stats of friends profile
 ## Users
 List of users currently being monitored
 <br>
-`"rishabhjakhar04", "AdvikGupta2005", "BhattAkshat", "garvit4356", "udaypandita2005", "RobinHood_1803", "Mokshmalik999", "Eklavya_sharma", "Siddharth_kalra05", "HARDIK_ARORA_16", "tanmaygakhar", "_ishaaann_", "tanishqgoyal470", "ModitMalhotra", "timmiii", "nityaagoel", "namit23340", "mrfate", "RuSKie147", "diviirockgod6", "aryan23143", "yay-code", "aryantayal05`
+`"rishabhjakhar04", "AdvikGupta2005", "BhattAkshat", "garvit4356", "udaypandita2005", "RobinHood_1803", "Mokshmalik999", "Eklavya_sharma", "Siddharth_kalra05", "HARDIK_ARORA_16", "tanmaygakhar", "_ishaaann_", "tanishqgoyal470", "ModitMalhotra", "timmiii", "nityaagoel", "namit23340", "mrfate", "RuSKie147", "diviirockgod6", "aryan23143", "yay-code", "aryantayal05"`
 
 
 ## Addition Guide
